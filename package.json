@@ -1,0 +1,27 @@
+{
+  "name": "gitfolio",
+  "version": "1.0.0",
+  "description": "Template cards to showcase your GitHub proficiency in blogs and websites.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/capturemathan/Gitfolio.git"
+  },
+  "keywords": [
+    "gitfolio",
+    "github-cards",
+    "github"
+  ],
+  "author": "Mathana Kumar.S",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/capturemathan/Gitfolio/issues"
+  },
+  "homepage": "https://github.com/capturemathan/Gitfolio#readme",
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  }
+}
