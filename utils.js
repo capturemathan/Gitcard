@@ -4,35 +4,29 @@ const cheerio = require('cheerio');
 const axios = require("axios");
 
 // Variable Declarations
-var followers=0
-var following=0
-var imgurl=""
-var repocount=0
-var name=""
-var reposurl=""
 var languages=[]
 var freqLanguages={}
-var contributions=0
+var contributions=""
+var folio={}
 
 // Basic Details Function
-async function basicDetails(){
-    await fetch('https://api.github.com/users/capturemathan')
+async function basicDetails(username){
+    await fetch('https://api.github.com/users/'+username)
     .then(response => response.json())
     .then(json => {
-        name=json["name"]
-        repocount=json["public_repos"]
-        followers=json["followers"]
-        following=json["following"]
-        imgurl=json["avatar_url"]
-        reposurl=json["repos_url"]
+        folio["name"]=json["name"]
+        folio["repocount"]=json["public_repos"]
+        folio["followers"]=json["followers"]
+        folio["following"]=json["following"]
+        folio["imgurl"]=json["avatar_url"]
+        folio["reposurl"]=json["repos_url"]
     })
-    console.log(name,repocount,followers,following,imgurl,reposurl);
-    topLanguages();
+    topLanguages(username);
 }
 
 // Fetching Top 3 Languages
-async function topLanguages(){
-    await fetch(reposurl)
+async function topLanguages(username){
+    await fetch(folio["reposurl"])
     .then(response => response.json())
     .then(json => {
         for(var i=0; i<json.length;i++){
@@ -66,18 +60,24 @@ async function topLanguages(){
                 count++;
             }
         }
-        console.log(languages)
+        folio["languages"]=languages
     })
-    totalContributions();
+    totalContributions(username);
 }
 
 // Fetching Total Contributions
-async function totalContributions(){
-    const result = await axios.get('https://github.com/users/capturemathan/contributions');
+async function totalContributions(username){
+    const result = await axios.get('https://github.com/users/'+username+'/contributions');
     const data = cheerio.load(result.data);
-    let cal = data(".js-yearly-contributions")
-    contributions=parseInt(data(".position-relative h2", cal).text().trim().replace(/\n/g, '').split(" ")[0])
-    console.log(contributions)
+    contributions = data("h2").text().trim().replace(/\n/g, '').split(" ")[0]
+    folio["contributions"]=contributions
+    console.log(folio)
 }
 
-basicDetails()
+module.exports = function Gitfolio(username){
+    basicDetails(username);
+    console.log(folio)
+    return folio
+}
+
+basicDetails('capturemathan');
