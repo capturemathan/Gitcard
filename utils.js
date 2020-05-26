@@ -21,7 +21,7 @@ async function basicDetails(username){
         folio["imgurl"]=json["avatar_url"]
         folio["reposurl"]=json["repos_url"]
     })
-    topLanguages(username);
+    return topLanguages(username);
 }
 
 // Fetching Top 3 Languages
@@ -62,7 +62,7 @@ async function topLanguages(username){
         }
         folio["languages"]=languages
     })
-    totalContributions(username);
+    return totalContributions(username);
 }
 
 // Fetching Total Contributions
@@ -71,13 +71,13 @@ async function totalContributions(username){
     const data = cheerio.load(result.data);
     contributions = data("h2").text().trim().replace(/\n/g, '').split(" ")[0]
     folio["contributions"]=contributions
-    console.log(folio)
-}
-
-module.exports = function Gitfolio(username){
-    basicDetails(username);
-    console.log(folio)
+    //console.log(folio)
     return folio
 }
 
-basicDetails('capturemathan');
+module.exports = async function myfolio(username){
+    const ans = await basicDetails(username);
+    return ans
+}
+
+//basicDetails('capturemathan');
