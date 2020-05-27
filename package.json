@@ -1,6 +1,6 @@
 {
   "name": "gitcardjs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Template cards to showcase your GitHub proficiency in blogs and websites.",
   "main": "app.js",
   "scripts": {
