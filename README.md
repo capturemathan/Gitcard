@@ -26,3 +26,5 @@ Gitcard('capturemathan').then(function(res){
    Pass the res to any of the container tags using `innerHTML` methods like `dangerouslySetInnerHTML` in REACT
 })
 ```
+### Open Source License
+Read the license [here](https://github.com/capturemathan/Gitcard/blob/master/LICENSE)
