@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2020 | Mathana Kumar S (https://capturemathan.github.io)
+ */
+
 // Required Imports
 const fetch = require('node-fetch');
 const cheerio = require('cheerio');

@@ -1,7 +1,68 @@
+/*
+ * Copyright (c) 2020 | Mathana Kumar S (https://capturemathan.github.io)
+ */
+
 const utils= require('./utils.js')
+const inithtml='<div class="column is-one-quarter"><div class="card" id="cardfolio">'
+const endhtml ='</div></div>'
+var finalhtml=inithtml;
 
-utils('capturemathan').then(function(result){
-    console.log(result)
-})
+async function fetchFolio(username){
+    await utils(username).then(function(res){
+        return htmlFolio(res,username);
+    });
+}
 
-//Gitfolio('capturemathan')
+function htmlFolio(result,username){
+    
+        console.log(result)
+
+        const initprofile = '<div class="card-image" id="profilepic"><figure class="image container is-128x128"><img class="is-rounded"' 
+        + ' src=' + '"' + result["imgurl"] + '">';
+        const endprofile='</figure></div>';
+        finalhtml+=initprofile+endprofile;
+
+        const initname='<div class="has-text-centered" id="name"><a'
+        + ' href='+ '"https://github.com/' + username + '" ' + 'target="_blank">' + result["name"];
+        const endname= '</a></div>';
+        finalhtml+=initname+endname;
+
+        const initlang = '<div class="has-text-centered" id="languages">'
+        const endlang = '</div>'
+        const initspantag = '<span class="is-info tag">'
+        const endspantag = '</span>'
+        const langarray=result["languages"]
+        var finalspan=''
+        for(var i=0;i<langarray.length;i++){
+            finalspan+=initspantag+langarray[i]+endspantag;
+        }
+        finalhtml+=initlang+finalspan+endlang;
+
+        const initrepo='<div class="has-text-centered" id="repos"><img style="vertical-align:middle"' 
+        + ' src= ' +'"https://github.com/capturemathan/Gitfolio/blob/master/assets/cloud.png?raw=true" ' + 'height="40" width="40">';
+        const nrepo = '<span id="repotext">' + result["repocount"] + ' Repositories';
+        const endrepo = '</span></div>';
+        finalhtml+=initrepo+nrepo+endrepo;
+
+        const initcontrib='<div class="has-text-centered" id="contributions"><img style="vertical-align:middle"' 
+        + ' src= ' +'"https://github.com/capturemathan/Gitfolio/blob/master/assets/graph.png?raw=true" ' + 'height="40" width="40">';
+        const ncontrib = '<span id="contribtext">' + result["repocount"] + ' Contributions';
+        const endcontrib = '</span></div>';
+        finalhtml+=initcontrib+ncontrib+endcontrib;
+
+        const initfooter ='<footer class="card-footer" id="follow"><div class="card-footer-item">'
+        + result["followers"] + ' Followers</div><div class="card-footer-item">'
+        + result["following"] + ' Following</div></footer>';
+        finalhtml+=initfooter;
+
+        finalhtml+=endhtml;
+        console.log(finalhtml)
+        return finalhtml
+}
+
+async function Gitfolio(username){
+    await fetchFolio(username).then(function(ans){
+        return ans;
+    });
+}
+console.log(Gitfolio('capturemathan'))
