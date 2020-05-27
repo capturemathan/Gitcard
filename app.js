@@ -39,13 +39,13 @@ function htmlFolio(result,username){
         finalhtml+=initlang+finalspan+endlang;
 
         const initrepo='<div class="has-text-centered" id="repos"><img style="vertical-align:middle"' 
-        + ' src= ' +'"https://raw.githubusercontent.com/capturemathan/Gitfolio/master/assets/cloud.png" ' + 'height="40" width="40">';
+        + ' src= ' +'"https://raw.githubusercontent.com/capturemathan/Gitcard/master/assets/cloud.png" ' + 'height="40" width="40">';
         const nrepo = '<span id="repotext">' + result["repocount"] + ' Repositories';
         const endrepo = '</span></div>';
         finalhtml+=initrepo+nrepo+endrepo;
 
         const initcontrib='<div class="has-text-centered" id="contributions"><img style="vertical-align:middle"' 
-        + ' src= ' +'"https://raw.githubusercontent.com/capturemathan/Gitfolio/master/assets/graph.png" ' + 'height="40" width="40">';
+        + ' src= ' +'"https://raw.githubusercontent.com/capturemathan/Gitcard/master/assets/graph.png" ' + 'height="40" width="40">';
         const ncontrib = '<span id="contribtext">' + result["contributions"] + ' Contributions';
         const endcontrib = '</span></div>';
         finalhtml+=initcontrib+ncontrib+endcontrib;
@@ -60,9 +60,9 @@ function htmlFolio(result,username){
         return finalhtml
 }
 
-module.exports = async function Gitfolio(username){
+module.exports = async function Gitcard(username){
     return fetchFolio(username).then(function(ans){
         return ans;
     });
 }
-//console.log(Gitfolio('capturemathan'))
+//console.log(Gitcard('capturemathan'))
