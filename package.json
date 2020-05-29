@@ -1,6 +1,6 @@
 {
   "name": "gitcardjs",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Template cards to showcase your GitHub proficiency in blogs and websites.",
   "main": "app.js",
   "scripts": {
@@ -25,5 +25,5 @@
     "cheerio": "^1.0.0-rc.3",
     "node-fetch": "^2.6.0"
   },
-  "unpkg" : "gitcard.js"
+  "unpkg": "gitcard.js"
 }
