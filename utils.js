@@ -4,13 +4,10 @@
 
 // Required Imports
 const fetch = require('node-fetch');
-const cheerio = require('cheerio');
-const axios = require("axios");
 
 // Variable Declarations
 var languages=[]
 var freqLanguages={}
-var contributions=""
 var folio={}
 
 // Basic Details Function
@@ -71,10 +68,11 @@ async function topLanguages(username){
 
 // Fetching Total Contributions
 async function totalContributions(username){
-    const result = await axios.get('https://github.com/users/'+username+'/contributions');
-    const data = cheerio.load(result.data);
-    contributions = data("h2").text().trim().replace(/\n/g, '').split(" ")[0]
-    folio["contributions"]=contributions
+    await fetch('https://mathanapis.000webhostapp.com/fetchcontrib.php?username='+username)
+    .then(response => response.json())
+    .then(json => {
+        folio["contributions"]=json["contributions"]  
+    });
     //console.log(folio)
     return folio
 }
