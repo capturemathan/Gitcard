@@ -11,7 +11,7 @@ var freqLanguages={}
 var folio={}
 
 // Basic Details Function
-async function basicDetails(username){
+async function basicDetails(token, username){
     await fetch('https://api.github.com/users/'+username)
     .then(response => response.json())
     .then(json => {
@@ -22,11 +22,11 @@ async function basicDetails(username){
         folio["imgurl"]=json["avatar_url"]
         folio["reposurl"]=json["repos_url"]
     })
-    return topLanguages(username);
+    return topLanguages(token, username);
 }
 
 // Fetching Top 3 Languages
-async function topLanguages(username){
+async function topLanguages(token, username){
     await fetch(folio["reposurl"])
     .then(response => response.json())
     .then(json => {
@@ -63,22 +63,34 @@ async function topLanguages(username){
         }
         folio["languages"]=languages
     })
-    return totalContributions(username);
+    return totalContributions(token, username);
 }
 
 // Fetching Total Contributions
-async function totalContributions(username){
-    await fetch('https://mathanapis.000webhostapp.com/fetchcontrib.php?username='+username)
-    .then(response => response.json())
-    .then(json => {
-        folio["contributions"]=json["contributions"]  
-    });
-    //console.log(folio)
+async function totalContributions(token, username){
+    const headers = {
+        "Authorization": `bearer ${token}`,
+    }
+    const body = {
+        "query": `query {
+            user(login: "${username}") {
+              contributionsCollection {
+                contributionCalendar {
+                  totalContributions
+                }
+              }
+            }
+          }`
+    }
+    const response = await fetch("https://api.github.com/graphql", { method: "POST", body: JSON.stringify(body), headers });
+    const data = await response.json();
+    folio["contributions"] = data.data.user.contributionsCollection.contributionCalendar.totalContributions;
+
     return folio
 }
 
-module.exports = async function myfolio(username){
-    const ans = await basicDetails(username);
+module.exports = async function myfolio(token, username){
+    const ans = await basicDetails(token, username);
     return ans
 }
 
