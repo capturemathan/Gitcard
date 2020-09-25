@@ -69,12 +69,11 @@ async function topLanguages(token, username){
 // Fetching Total Contributions
 async function totalContributions(token, username){
     const headers = {
-        'Authorization': `bearer ${token}`,
+        "Authorization": `bearer ${token}`,
     }
     const body = {
         "query": `query {
             user(login: "${username}") {
-              name
               contributionsCollection {
                 contributionCalendar {
                   totalContributions
@@ -83,9 +82,9 @@ async function totalContributions(token, username){
             }
           }`
     }
-    const response = await fetch('https://api.github.com/graphql', { method: 'POST', body: JSON.stringify(body), headers: headers })
-    const data = await response.json()
-    folio["contributions"] = data.data.user.contributionsCollection.contributionCalendar.totalContributions
+    const response = await fetch("https://api.github.com/graphql", { method: "POST", body: JSON.stringify(body), headers });
+    const data = await response.json();
+    folio["contributions"] = data.data.user.contributionsCollection.contributionCalendar.totalContributions;
 
     return folio
 }
