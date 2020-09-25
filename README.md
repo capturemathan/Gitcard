@@ -17,9 +17,9 @@ Template cards to showcase your GitHub proficiency on blogs and websites :bowtie
 ``` javascript
 const Gitcard = require('gitcardjs');
 ```
-3. Call the package with passing `github username`
+3. Call the package with passing `github authorization token` from [here](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) and `github username`
 ``` javascript
-Gitcard('capturemathan').then(function(res){
+Gitcard('token', 'capturemathan').then(function(res){
     console.log(res)
     /*
     <div class="column is-one-quarter"><div class="card" id="cardfolio"><div class="card-image" id="profilepic"><figure class="image container is-128x128"><img class="is-rounded" src="https://avatars2.githubusercontent.com/u/36666781?v=4"></figure></div><div class="has-text-centered" id="name"><a href="https://github.com/capturemathan" target="_blank">Mathana Kumar S</a></div><div class="has-text-centered" id="languages"><span class="is-info tag" id="item">Java</span><span class="is-info tag" id="item">Python</span><span class="is-info tag" id="item">JavaScript</span></div><div class="has-text-centered" id="repos"><img style="vertical-align:middle" src= "https://raw.githubusercontent.com/capturemathan/Gitcard/master/assets/images/cloud.png" height="40" width="40"><span id="repotext">22 Repositories</span></div><div class="has-text-centered" id="contributions"><img style="vertical-align:middle" src= "https://raw.githubusercontent.com/capturemathan/Gitcard/master/assets/images/graph.png" height="40" width="40"><span id="contribtext">557 Contributions</span></div><footer class="card-footer" id="follow"><div class="card-footer-item">27 Followers</div><div class="card-footer-item">15 Following</div></footer></div></div>

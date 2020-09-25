@@ -7,8 +7,8 @@ const inithtml='<div class="column is-one-quarter"><div class="card" id="cardfol
 const endhtml ='</div></div>'
 var finalhtml=inithtml;
 
-async function fetchFolio(username){
-    return utils(username).then(function(res){
+async function fetchFolio(token, username){
+    return utils(token, username).then(function(res){
         return htmlFolio(res,username);
     });
 }
@@ -60,8 +60,8 @@ function htmlFolio(result,username){
         return finalhtml
 }
 
-module.exports = async function Gitcard(username){
-    return fetchFolio(username).then(function(ans){
+module.exports = async function Gitcard(token, username){
+    return fetchFolio(token, username).then(function(ans){
         return ans;
     });
 }
