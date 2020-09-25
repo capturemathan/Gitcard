@@ -17,7 +17,7 @@ Template cards to showcase your GitHub proficiency on blogs and websites :bowtie
 ``` javascript
 const Gitcard = require('gitcardjs');
 ```
-3. Call the package with passing `github authorization token` from [here](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) and `github username`
+3. Call the package with passing `github authorization token` with scope `read:user` from [here](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) and `github username`
 ``` javascript
 Gitcard('token', 'capturemathan').then(function(res){
     console.log(res)
