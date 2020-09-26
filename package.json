@@ -4,7 +4,8 @@
   "description": "Template cards to showcase your GitHub proficiency in blogs and websites.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "parcel app.js",
+    "build": "parcel build app.js"
   },
   "repository": {
     "type": "git",
@@ -23,5 +24,8 @@
   "dependencies": {
     "node-fetch": "^2.6.0"
   },
-  "unpkg": "gitcard.js"
+  "unpkg": "gitcard.js",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
+  }
 }

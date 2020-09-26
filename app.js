@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2020 | Mathana Kumar S (https://capturemathan.github.io)
  */
-
+import 'regenerator-runtime/runtime'
 const utils= require('./utils.js')
 const inithtml='<div class="column is-one-quarter"><div class="card" id="cardfolio">'
 const endhtml ='</div></div>'
