@@ -2,3 +2,5 @@
 assets/
 # Config file
 _config.yml
+# Dist Directory
+dist/
