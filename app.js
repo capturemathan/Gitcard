@@ -19,7 +19,7 @@ async function fetchFolio(token, username) {
                 <a href="https://github.com/${username}" target="_blank">${result['name']}</a>
             </div>
             <div class="has-text-centered" id="languages">
-                ${result['languages'].map((lan) => `<span class="is-info tag" id="item">${lan}</span>`)}
+                ${result['languages'].map((lan) => `<span class="is-info tag" id="item">${lan}</span>`).join(' ')}
             </div>
             <div class="has-text-centered" id="repos">
                 <img style="vertical-align:middle" src="https://raw.githubusercontent.com/capturemathan/Gitcard/master/assets/images/cloud.png" height="40" width="40" />

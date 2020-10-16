@@ -10,14 +10,6 @@ async function getPortfolio(token, username) {
     const response = await fetch(`https://api.github.com/users/${username}`)
     let data = await response.json()
 
-    // let folio = {
-    //     name,
-    //     public_repos,
-    //     followers,
-    //     following,
-    //     avatar_url,
-    //     repos_url
-    // } = data
     data.languages = await topLanguages(data.repos_url)
     data.contributions = await totalContributions(token, username)
 
@@ -31,7 +23,7 @@ async function topLanguages(reposurl) {
 
     let languagesMap = data.reduce((acc, { language }) => ((acc[language] = (acc[language] || 0) + 1), acc), {})
 
-    let topThreeLanguages = Object.keys(languagesMap)
+    let topThreeLanguages = Object.keys(languagesMap).filter(lang => lang !== 'null')
         .sort((first, second) => languagesMap[second] - languagesMap[first])
         .slice(0, 3)
 
