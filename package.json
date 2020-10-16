@@ -22,7 +22,8 @@
   },
   "homepage": "https://github.com/capturemathan/Gitcard#readme",
   "dependencies": {
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.1",
+    "regenerator-runtime": "^0.13.7"
   },
   "unpkg": "gitcard.js",
   "devDependencies": {
