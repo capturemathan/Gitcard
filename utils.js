@@ -8,20 +8,20 @@ const fetch = require('node-fetch')
 // Basic Details Function
 async function getPortfolio(token, username) {
     const response = await fetch(`https://api.github.com/users/${username}`)
-    const data = await response.json()
+    let data = await response.json()
 
-    let folio = {
-        name,
-        repocount,
-        followers,
-        following,
-        imgurl,
-        reposurl
-    } = data
-    folio.languages = await topLanguages(folio.reposurl)
-    folio.contributions = await totalContributions(token, username)
+    // let folio = {
+    //     name,
+    //     public_repos,
+    //     followers,
+    //     following,
+    //     avatar_url,
+    //     repos_url
+    // } = data
+    data.languages = await topLanguages(data.repos_url)
+    data.contributions = await totalContributions(token, username)
 
-    return folio
+    return data
 }
 
 // Fetching Top 3 Languages
@@ -41,10 +41,11 @@ async function topLanguages(reposurl) {
 // Fetching Total Contributions
 async function totalContributions(token, username) {
     const headers = {
-        Authorization: `bearer ${token}`
+        Authorization: `bearer ${token}`,
+        'Content-Type': 'application/json'
     }
-    const body = `{
-        query: query {
+    const body = JSON.stringify({
+        query: `query {
             user(login: "${username}") {
                 contributionsCollection {
                     contributionCalendar {
@@ -52,8 +53,8 @@ async function totalContributions(token, username) {
                     }
                 }
             }
-        }
-    }`
+        }`
+    })
 
     const response = await fetch('https://api.github.com/graphql', { method: 'POST', body, headers })
     const data = await response.json()

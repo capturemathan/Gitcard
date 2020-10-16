@@ -5,14 +5,14 @@ import 'regenerator-runtime/runtime'
 import getPortfolio from './utils.js'
 
 async function fetchFolio(token, username) {
-    const result = getPortfolio(token, username)
+    const result = await getPortfolio(token, username)
 
     const markup = `
     <div class="column is-one-quarter">
         <div class="card" id="cardfolio">
             <div class="card-image" id="profilepic">
                 <figure class="image container is-128x128">
-                    <img class="is-rounded" src="${result['imgurl']}" />
+                    <img class="is-rounded" src="${result['avatar_url']}" />
                 </figure>
             </div>
             <div class="has-text-centered" id="name">
@@ -23,7 +23,7 @@ async function fetchFolio(token, username) {
             </div>
             <div class="has-text-centered" id="repos">
                 <img style="vertical-align:middle" src="https://raw.githubusercontent.com/capturemathan/Gitcard/master/assets/images/cloud.png" height="40" width="40" />
-                <span id="repotext">${result['repocount']} Repositories</span>
+                <span id="repotext">${result['public_repos']} Repositories</span>
             </div>
             <div class="has-text-centered" id="contributions">
                 <img style="vertical-align:middle" src="https://raw.githubusercontent.com/capturemathan/Gitcard/master/assets/images/graph.png" height="40" width="40">
@@ -40,7 +40,8 @@ async function fetchFolio(token, username) {
     return markup
 }
 
-module.exports = async function Gitcard(token, username) {
+async function Gitcard(token, username) {
     return await fetchFolio(token, username)
 }
-console.log(Gitcard('bf3d6389af8f2cce57231d6392536371f535b33e','capturemathan'))
+
+module.exports = Gitcard
