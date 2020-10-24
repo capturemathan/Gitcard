@@ -8,6 +8,7 @@ async function fetchFolio(token, username) {
     const result = await getPortfolio(token, username)
 
     const markup = `
+    <div class="columns">
     <div class="column is-one-quarter">
         <div class="card" id="cardfolio">
             <div class="card-image" id="profilepic">
@@ -34,6 +35,7 @@ async function fetchFolio(token, username) {
                 <div class="card-footer-item">${result['following']} Following</div>
             </footer>
         </div>
+    </div>
     </div>
 `
 
