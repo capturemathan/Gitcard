@@ -53,4 +53,4 @@ async function totalContributions(token, username) {
     return data.data.user.contributionsCollection.contributionCalendar.totalContributions
 }
 
-module.exports = getPortfolio
+module.exports = getPortfolio;

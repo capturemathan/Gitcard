@@ -1,8 +1,7 @@
 /*
  * Copyright (c) 2020 | Mathana Kumar S (https://capturemathan.github.io)
  */
-import 'regenerator-runtime/runtime'
-import getPortfolio from './utils.js'
+const getPortfolio = require('./utils.js')
 
 async function fetchFolio(token, username) {
     const result = await getPortfolio(token, username)
@@ -46,4 +45,4 @@ async function Gitcard(token, username) {
     return await fetchFolio(token, username)
 }
 
-module.exports = Gitcard
+module.exports = Gitcard;
