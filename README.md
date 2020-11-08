@@ -9,7 +9,7 @@ Template cards to showcase your GitHub proficiency on blogs and websites :bowtie
 `npm install gitcardjs --save`
 
 ### Usage
-1. Download the desired CSS theme (Light or Dark) from [here](https://github.com/capturemathan/Gitcard/tree/master/assets/themes) and link it as a Stylesheet.
+1. Download the desired CSS theme (Light or Dark) from [here](https://github.com/capturemathan/Gitcard/tree/master/assets/themes) and link it as a Stylesheet, uses [Bulma](https://bulma.io/) under the hood.
 ``` js
 import './gitcard-light.css'; 
 ```
@@ -22,10 +22,11 @@ const Gitcard = require('gitcardjs');
 Gitcard('token', 'capturemathan').then(function(res){
     console.log(res)
     /*
-    <div class="column is-one-quarter"><div class="card" id="cardfolio"><div class="card-image" id="profilepic"><figure class="image container is-128x128"><img class="is-rounded" src="https://avatars2.githubusercontent.com/u/36666781?v=4"></figure></div><div class="has-text-centered" id="name"><a href="https://github.com/capturemathan" target="_blank">Mathana Kumar S</a></div><div class="has-text-centered" id="languages"><span class="is-info tag" id="item">Java</span><span class="is-info tag" id="item">Python</span><span class="is-info tag" id="item">JavaScript</span></div><div class="has-text-centered" id="repos"><img style="vertical-align:middle" src= "https://raw.githubusercontent.com/capturemathan/Gitcard/master/assets/images/cloud.png" height="40" width="40"><span id="repotext">22 Repositories</span></div><div class="has-text-centered" id="contributions"><img style="vertical-align:middle" src= "https://raw.githubusercontent.com/capturemathan/Gitcard/master/assets/images/graph.png" height="40" width="40"><span id="contribtext">557 Contributions</span></div><footer class="card-footer" id="follow"><div class="card-footer-item">27 Followers</div><div class="card-footer-item">15 Following</div></footer></div></div>
+    <div class="columns"><div class="column is-one-quarter">...</div></div>
     */
    Pass the res to any of the container tags using `innerHTML` methods like `dangerouslySetInnerHTML` in REACT
 })
 ```
+4. Refer to the [example](https://github.com/capturemathan/Gitcard/tree/master/example) directory for further details. 
 ### Open Source License
 Read the license [here](https://github.com/capturemathan/Gitcard/blob/master/LICENSE)

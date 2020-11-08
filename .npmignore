@@ -4,3 +4,5 @@ assets/
 _config.yml
 # Dist Directory
 dist/
+# Example Directory
+example/
