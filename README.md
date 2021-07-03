@@ -1,7 +1,7 @@
 # Gitcard
 Template cards to showcase your GitHub proficiency on blogs and websites :bowtie:
 </br></br>
-![npm](https://img.shields.io/npm/dy/gitcardjs?color=brightgreen&style=for-the-badge)
+![npm](https://img.shields.io/npm/dt/gitcardjs?color=brightgreen&style=for-the-badge)
 
 ![Gitcard](https://github.com/capturemathan/Gitcard/blob/master/assets/images/banner.jpg?raw=true)
 
